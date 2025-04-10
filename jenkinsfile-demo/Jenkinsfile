@@ -1,0 +1,17 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Checkout') {
+      steps {
+        echo 'Clonando el repo...'
+      }
+    }
+
+    stage('Run script') {
+      steps {
+        sh 'chmod +x hola.sh && ./hola.sh'
+      }
+    }
+  }
+}

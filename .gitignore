@@ -1,0 +1,14 @@
+# Terraform
+terraform/.terraform/
+terraform/.terraform.lock.hcl
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+
+# Archivos de claves (por seguridad, aunque ahora estás haciendo demo)
+jenkins-demo-key.pem
+
+# Archivos temporales del sistema/editor
+*.log
+*.swp
+.DS_Store
+.vscode/
