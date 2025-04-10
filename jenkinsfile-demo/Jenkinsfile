@@ -1,16 +1,30 @@
 pipeline {
   agent any
 
+  environment {
+    TF_IN_AUTOMATION = "true"
+  }
+
   stages {
     stage('Checkout') {
       steps {
-        echo 'Clonando el repo...'
+        git 'https://github.com/chemibot/jenkins-demo.git'
       }
     }
 
-    stage('Run script') {
+    stage('Terraform Init') {
       steps {
-        sh 'chmod +x hola.sh && ./hola.sh'
+        dir('terraform') {
+          sh 'terraform init'
+        }
+      }
+    }
+
+    stage('Terraform Apply') {
+      steps {
+        dir('terraform') {
+          sh 'terraform apply -auto-approve'
+        }
       }
     }
   }
